@@ -11,7 +11,7 @@ body {
   
   /* Header */
   .intro {
-    padding: 80px 40px 60px;
+    padding: 20px 20px 10px;
     text-align: center;
     background: #111;
     position: sticky;
@@ -104,5 +104,31 @@ body {
   .checkpoint.right {
     right: 60px;
     text-align: left;
+  }
+
+  .intro-text {
+    position: absolute;
+    width: 800px;
+    padding: 20px 25px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.6;
+    border-left: 5px solid red;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(255, 0, 0, 0.2);
+  }
+  
+  .intro-text.right {
+    right: 60px;
+  }
+  
+  .intro-text.left {
+    left: 60px;
+  }
+
+  strong {
+    color: red
   }
   
