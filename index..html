@@ -2,65 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>F1 Race Track Story</title>
+  <title>F1 Race Track Story</title>
+
+  <!-- Styles & fonts -->
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet" />
+
+  <!-- D3 for the two new visualisations -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
+
 <body>
+  <!-- ── Sticky header ── -->
   <section class="intro">
-    <h1>Evolution of Formula 1</h1>
-    <p>Scroll down the race track to explore the history of Formula 1 through key moments, rivalries, and engineering feats.</p>
+    <h1>Evolution of Formula 1</h1>
+    <p>Scroll down the race track to explore the history of Formula 1 through key moments, rivalries, and engineering feats.</p>
   </section>
 
+  <!-- ── Scrollable track & checkpoints ── -->
   <div id="track-container">
     <svg id="raceTrack" viewBox="0 0 1000 3500" preserveAspectRatio="xMidYMin meet">
-      <!-- Road Track -->
+      <!-- Track / centre‑line -->
       <path id="trackPath"
-            d="M200 0
-               C 100 300, 600 300, 500 600
-               S 100 1000, 300 1300
-               S 800 1600, 600 1900
-               S 100 2300, 300 2600
-               S 800 2900, 500 3200
-               S 200 3500, 200 3500"
-            fill="none"
-            stroke="black"
-            stroke-width="40"
-            stroke-linecap="round"
-      />
-      <!-- Dashed centerline (optional) -->
+            d="M200 0 C 100 300, 600 300, 500 600 S 100 1000, 300 1300
+               S 800 1600, 600 1900 S 100 2300, 300 2600
+               S 800 2900, 500 3200 S 200 3500, 200 3500"
+            fill="none" stroke="black" stroke-width="40" stroke-linecap="round"/>
       <path id="centerLine"
-            d="M200 0
-               C 100 300, 600 300, 500 600
-               S 100 1000, 300 1300
-               S 800 1600, 600 1900
-               S 100 2300, 300 2600
-               S 800 2900, 500 3200
-               S 200 3500, 200 3500"
-            fill="none"
-            stroke="white"
-            stroke-width="4"
-            stroke-dasharray="20, 20"
-      />
+            d="M200 0 C 100 300, 600 300, 500 600 S 100 1000, 300 1300
+               S 800 1600, 600 1900 S 100 2300, 300 2600
+               S 800 2900, 500 3200 S 200 3500, 200 3500"
+            fill="none" stroke="white" stroke-width="4" stroke-dasharray="20, 20"/>
+      <!-- Car icon that follows the path -->
       <image id="car" href="f1-car.svg" width="160" height="80" transform="rotate(180)" />
-
     </svg>
 
-    <!-- Alternating Checkpoint Content -->
-    <div class="checkpoint right" style="top: 30px; left: 700px">FORMULA 1</div>
+    <!-- Opening text bubble -->
+    <div class="checkpoint right" style="top: 30px; left: 700px">FORMULA 1</div>
     <div class="intro-text right" style="top: 100px; left: 700px;">
-      <p><strong>Formula 1</strong> is the pinnacle of motorsport — where engineering innovation meets sheer driver talent. When you think of speed, you think of Formula 1. Formula 1 isn’t just a sport; it’s a living, breathing testament to innovation and competition</p>
-      <p>Over the years, not only has it provided us with edge-of-the-seat entertainment, legendary rivalries, and countless memories, it has also led led to some of the most ground-breaking innovations in motorsport and automotive industry as a whole. 
-        From roaring V12s to today’s turbo-hybrid power units, the sport has seen drastic changes in speed, safety, and spectacle. Let us begin our journey to see how Formula 1 evolved into the sport it is today and some signficant events and milestones that are pivotal to this story.</p>
+      <p><strong>Formula 1</strong> is the pinnacle of motorsport — where engineering innovation meets sheer driver talent.</p>
+      <p>From roaring V12s to today’s turbo‑hybrids, the sport’s evolution in speed, safety and spectacle is a story worth telling.</p>
     </div>
-    
-    <div class="checkpoint right" style="top: 580px;">🏁 F1 vs Other Vehicles</div>
-    <div class="checkpoint left" style="top: 1250px;">🛡️ Safety Regulations</div>
-    <div class="checkpoint right" style="top: 1850px;">🤜 Rivalries of the Decade</div>
-    <div class="checkpoint left" style="top: 2500px;">⚙️ Pit Stop Innovations</div>
-    <div class="checkpoint right" style="top: 3150px;">🏆 Legacy of Champions</div>
+
+    <!-- ▒▒▒ 1. SPEED‑COMPARISON CHECKPOINT ▒▒▒ -->
+    <div class="checkpoint right" style="top: 580px;">🏁 F1 vs Other Vehicles</div>
+    <!-- The bar‑chart will be rendered into this div when it scrolls into view -->
+    <div id="speed-chart" class="viz hidden" style="top: 660px; right: 60px;"></div>
+
+    <!-- ▒▒▒ 2. CAR‑ANATOMY CHECKPOINT ▒▒▒ -->
+    <div class="checkpoint right" style="top: 1100px;">🔍 Anatomy of an F1 Car</div>
+    <!-- The illustrated car + tool‑tips appear here -->
+    <div id="car-anatomy" class="viz hidden"
+         style="top: 1180px; left: 810px; width: 800px; height: 400px;"></div>
+
+    <!-- Future checkpoints (place‑holders) -->
+    <div class="checkpoint left"  style="top: 1750px;">🛡️ Safety Regulations</div>
+    <div class="checkpoint right" style="top: 1850px;">🤜 Rivalries of the Decade</div>
+    <div class="checkpoint left"  style="top: 2500px;">⚙️ Pit Stop Innovations</div>
+    <div class="checkpoint right" style="top: 3150px;">🏆 Legacy of Champions</div>
   </div>
 
+  <!-- Behaviour -->
   <script src="script.js"></script>
 </body>
 </html>

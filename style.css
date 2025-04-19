@@ -1,134 +1,123 @@
-/* Reset + Font */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
-    color: #f4f4f4;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+/* ───────────────────────────────────────────────────────
+   GLOBAL LOOK & FEEL
+   ─────────────────────────────────────────────────────── */
+   body{
+    margin:0; padding:0;
+    font-family:'Orbitron',sans-serif;
+    background:linear-gradient(180deg,#0f0f0f 0%,#1a1a1a 100%);
+    color:#f4f4f4;
+    scroll-behavior:smooth;
+    overflow-x:hidden;
   }
   
-  /* Header */
-  .intro {
-    padding: 20px 20px 10px;
-    text-align: center;
-    background: #111;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-    border-bottom: 3px solid red;
+  /* Sticky header */
+  .intro{
+    padding:20px 20px 10px;
+    text-align:center;
+    background:#111;
+    position:sticky; top:0; z-index:10;
+    box-shadow:0 8px 20px rgba(0,0,0,.7);
+    border-bottom:3px solid red;
+  }
+  .intro h1{
+    font-size:48px; font-weight:800; margin:0;
+    color:red; text-shadow:0 2px 4px rgba(255,0,0,.4);
+    letter-spacing:2px;
+  }
+  .intro p{font-size:18px; margin-top:12px; color:#ccc;}
+  
+  /* ─── Track & scrolling area ─── */
+  #track-container{
+    position:relative;
+    width:100%;
+    height:3600px;              /* makes the page scroll */
+    background:linear-gradient(#1a1a1a,#0f0f0f);
+  }
+  svg#raceTrack{
+    position:absolute; top:0; left:0;
+    width:1000px; height:3500px;
+    pointer-events:none;
+  }
+  #trackPath{
+    stroke:#222; stroke-width:40; stroke-linecap:round;
+    filter:drop-shadow(0 0 10px rgba(255,0,0,.3));
+  }
+  #centerLine{
+    stroke:#ccc; stroke-width:4; stroke-dasharray:20 20; opacity:.6;
   }
   
-  .intro h1 {
-    font-size: 48px;
-    font-weight: 800;
-    margin: 0;
-    color: red;
-    text-shadow: 0 2px 4px rgba(255, 0, 0, 0.4);
-    letter-spacing: 2px;
+  /* Scrolling car marker */
+  #car{
+    fill:red; stroke:white; stroke-width:2;
+    filter:drop-shadow(0 0 4px red);
+    transition:all .05s ease-out;
   }
   
-  .intro p {
-    font-size: 18px;
-    margin-top: 12px;
-    color: #ccc;
+  /* ─── Checkpoints & intro bubbles ─── */
+  .checkpoint{
+    position:absolute; width:300px;
+    background:rgba(255,255,255,.05);
+    padding:16px 20px; border-radius:12px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 12px rgba(255,0,0,.2);
+    font-size:18px; color:#fff;
+    border-left:5px solid red;
+    transition:transform .3s ease;
   }
+  .checkpoint:hover{transform:scale(1.03);}
+  .checkpoint.left {left:60px;  text-align:right;}
+  .checkpoint.right{right:60px; text-align:left;}
   
-  /* Track Container */
-  #track-container {
-    position: relative;
-    width: 100%;
-    height: 3600px;
-    background: linear-gradient(#1a1a1a, #0f0f0f);
+  .intro-text{
+    position:absolute; width:800px;
+    padding:20px 25px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(12px);
+    color:#fff; font-size:16px; line-height:1.6;
+    border-left:5px solid red; border-radius:12px;
+    box-shadow:0 4px 14px rgba(255,0,0,.2);
   }
+  .intro-text.right{right:60px;}
+  .intro-text.left {left:60px;}
+  strong{color:red;}
   
-  /* Track SVG */
-  svg#raceTrack {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1000px;
-    height: 3500px;
-    pointer-events: none;
+  /* ───────────────────────────────────────────────────────
+     GENERIC “VISUALISATION CARD”
+     (Both the bar‑chart and the anatomy graphic use this)
+     ─────────────────────────────────────────────────────── */
+  .viz{
+    position:absolute;
+    width:600px; height:320px;          /* overridden inline when needed */
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(10px);
+    border-left:5px solid red; border-radius:12px;
+    padding:24px 28px;
+    box-shadow:0 4px 14px rgba(255,0,0,.2);
+    pointer-events:auto;
+    transition:opacity .6s ease-out;
   }
+  .hidden {opacity:0;}
+  .visible{opacity:1;}
   
-  #trackPath {
-    stroke: #222;
-    stroke-width: 40;
-    stroke-linecap: round;
-    filter: drop-shadow(0px 0px 10px rgba(255, 0, 0, 0.3));
-  }
+  /* ─── BAR‑CHART (speed comparison) ─── */
+  .bar{fill:red;}
+  .bar:hover{fill:#ff6666;}
+  .axis text{font-size:14px; fill:#f4f4f4;}
+  .axis path,.axis line{stroke:#888;}
   
-  #centerLine {
-    stroke: #ccc;
-    stroke-width: 4;
-    stroke-dasharray: 20, 20;
-    opacity: 0.6;
+  /* ─── CAR‑ANATOMY ILLUSTRATION ─── */
+  #car-anatomy svg{width:100%; height:100%;}
+  .car-part{
+    fill:#444; stroke:#888; stroke-width:2;
+    cursor:pointer; transition:fill .25s;
   }
+  .car-part:hover{fill:red;}
   
-  /* Car Marker */
-  #car {
-    fill: red;
-    stroke: white;
-    stroke-width: 2;
-    filter: drop-shadow(0px 0px 4px red);
-    transition: all 0.05s ease-out;
-  }
-  
-  /* Checkpoint Boxes */
-  .checkpoint {
-    position: absolute;
-    width: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 16px 20px;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
-    font-size: 18px;
-    color: #fff;
-    border-left: 5px solid red;
-    transition: transform 0.3s ease;
-  }
-  
-  .checkpoint:hover {
-    transform: scale(1.03);
-  }
-  
-  .checkpoint.left {
-    left: 60px;
-    text-align: right;
-  }
-  
-  .checkpoint.right {
-    right: 60px;
-    text-align: left;
-  }
-
-  .intro-text {
-    position: absolute;
-    width: 800px;
-    padding: 20px 25px;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    color: #fff;
-    font-size: 16px;
-    line-height: 1.6;
-    border-left: 5px solid red;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(255, 0, 0, 0.2);
-  }
-  
-  .intro-text.right {
-    right: 60px;
-  }
-  
-  .intro-text.left {
-    left: 60px;
-  }
-
-  strong {
-    color: red
+  /* Tooltip that follows the cursor */
+  #tooltip{
+    position:absolute; z-index:5; max-width:240px;
+    padding:8px 12px; background:rgba(0,0,0,.85); color:#fff;
+    font-size:14px; line-height:1.4;
+    border-radius:6px; pointer-events:none; display:none;
   }
   
