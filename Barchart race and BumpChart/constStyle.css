@@ -1,0 +1,210 @@
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  /* Chart headings */
+  h2 {
+    color: #ff4444;
+    text-align: center;
+    margin: 40px 0 10px;
+  }
+  
+  /* Chart wrapper */
+  .chart-container {
+    background: #111;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #111;
+    margin: 0 auto 60px;
+    max-width: 1400px;
+    padding: 20px 0;
+  }
+  
+
+  /* Chart titles */
+  .chart-title {
+    fill: #fff !important;
+    font-size: 2em;
+    font-weight: bold;
+    text-anchor: middle;
+  }
+  
+  /* Axes */
+  .axis path,
+  .axis line {
+    stroke: #555 !important;
+    shape-rendering: crispEdges;
+  }
+  .axis text {
+    fill: #fff !important;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Axis labels */
+  .axis-label {
+    fill: #fff;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /*——————————————————
+     Bump‐Chart 
+  ——————————————————*/
+  
+  #bumpChart svg {
+    width: 100%;
+    max-width: 98%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+
+  .row-background {
+    fill: #181818;
+  }
+  
+  /* Grid lines (horizontal & vertical) */
+  .grid-line {
+    stroke: #222;
+    stroke-width: 1px;
+    opacity: 0.7;
+  }
+  
+  /* The “bump” lines */
+  .bump-line {
+    fill: none;
+    stroke-width: 3px;
+    opacity: 0.9;
+    transition: stroke-width 0.2s, opacity 0.2s;
+  }
+  .bump-line.inactive {
+    opacity: 0.18 !important;
+  }
+  
+  /* The data‐point circles */
+  .data-point {
+    stroke: #fff;
+    stroke-width: 2.5px;
+    transition: opacity 0.2s;
+  }
+  .data-point.inactive {
+    opacity: 0.18 !important;
+  }
+  
+  
+  .engine-letter {
+    fill: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    pointer-events: none;
+    text-shadow: 0 0 4px #000, 0 0 2px #ff4444;
+  }
+  
+  /* Constructor label at end of lines */
+  .team-label {
+    fill: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    dominant-baseline: middle;
+    text-shadow: 0 0 4px #ff4444;
+  }
+  
+  /* Legend container and items */
+  .legend {
+    user-select: none;
+  }
+  .legend-item {
+    cursor: pointer;
+  }
+  .legend-item circle {
+    r: 12;
+    stroke: #fff;
+    stroke-width: 2px;
+  }
+  .legend-item text {
+    fill: #fff;
+    font-size: 15px;
+    dominant-baseline: middle;
+  }
+  .legend-item.active circle {
+    stroke: #ff4444 !important;
+    stroke-width: 3px !important;
+  }
+  .legend-item:hover circle {
+    filter: brightness(1.2);
+  }
+  
+  /*——————————————————
+     Tooltip
+  ——————————————————*/
+  .tooltip {
+    position: absolute;
+    background: #181818;
+    border: 1.5px solid #ff4444;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #fff;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    box-shadow: 0 2px 12px #ff4444cc;
+    z-index: 1000;
+  }
+  .tooltip strong {
+    color: #ff4444;
+  }
+  .tooltip br {
+    margin-bottom: 4px;
+  }
+  
+  /*——————————————————
+     Bar-Chart-Race 
+  ——————————————————*/
+  .bar rect {
+    shape-rendering: crispEdges;
+    opacity: 0.92;
+    fill: #ff2222;
+    filter: drop-shadow(0 0 6px #ff2222cc);
+    transition: fill 0.2s, opacity 0.2s;
+  }
+  .bar text {
+    font-size: 16px;
+    dominant-baseline: middle;
+    fill: #fff;
+  }
+  .bar .label {
+    font-weight: bold;
+    fill: #fff;
+  }
+  .bar .value {
+    fill: #fff;
+    font-size: 15px;
+  }
+  
+  /* Year ticker */
+  .ticker {
+    font-size: 36px !important;
+    fill: #ff4444 !important;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff4444;
+  }
+  
+ 
+  #barChartRace svg {
+    width: 95vw;
+    max-width: 1400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  #barChartRace {
+    height: 80vh;
+  }
+  
