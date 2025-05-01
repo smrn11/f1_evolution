@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>F1 World-Tour Map</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3"></script>
+</head>
+<body>
+<header id="mapHeader">
+  <h1>Scale of F1 Today</h1>
+  <p>Explore the global reach of Formula 1 with this interactive visualization. Track the circuits, distances, and the journey of the 2024 F1 season. There is an odometer to show the distance teams travel to compete. The size of the dot is proportional to the number of races hosted at that circuit since 1950.</p>
+</header>
+  <div id="map-container">
+    <svg id="worldMap"></svg>
+
+    <div id="gaugeWrapper">
+      <svg id="speedometer"></svg>
+      <div id="infoBox">
+        <h2 id="seasonLabel"></h2>
+        <p><span id="km">0</span> km travelled</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
